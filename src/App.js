@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import URLSearchParams from 'url-search-params';
 import { Grommet } from 'grommet';
 import { grommet, dark } from 'grommet/themes';
+import { hpe } from 'grommet-theme-hpe';
 import { Router } from './Router';
 import Analytics from './components/Analytics';
 import Content from './components/Content';
@@ -9,16 +10,19 @@ import Content from './components/Content';
 const THEMES = {
   grommet,
   dark,
+  hpe,
 };
 
 export default class App extends Component {
   state = {
-    themeName: 'grommet',
+    themeName: 'hpe',
   };
 
   componentDidMount() {
     if (window.location.search) {
-      const { location: { search } } = window;
+      const {
+        location: { search },
+      } = window;
       const params = new URLSearchParams(search);
       // eslint-disable-next-line
       this.setState({ search, themeName: params.get('theme') });
@@ -37,7 +41,7 @@ export default class App extends Component {
     return (
       <Router search={search}>
         <Analytics>
-          <Grommet theme={THEMES[themeName || 'grommet']}>
+          <Grommet theme={THEMES[themeName || 'hpe']}>
             <Content />
           </Grommet>
         </Analytics>
